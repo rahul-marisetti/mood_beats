@@ -1,0 +1,127 @@
+/* Base Styles */
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Homepage Overlay Container */
+.overlay-container {
+  background-color: rgba(0, 0, 0, 0.85);
+  max-width: 800px;
+  margin: 10vh auto;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.overlay-container h1 {
+  font-size: 2.8rem;
+  color: #9c27b0;
+  margin-bottom: 20px;
+}
+
+.overlay-container p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 30px;
+  background-color: #673ab7;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #512da8;
+}
+
+/* Form Layout */
+.form-container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #111;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Select2 Dark Theme Styling */
+.select2-container--default .select2-selection--single {
+  background-color: #111 !important;
+  color: white !important;
+  border: 1px solid #444;
+  border-radius: 8px;
+  height: 42px;
+  font-size: 1rem;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: white !important;
+  line-height: 40px;
+  padding-left: 12px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 8px;
+  right: 8px;
+}
+
+.select2-dropdown {
+  background-color: #222 !important;
+  color: white !important;
+  border: 1px solid #444;
+}
+
+.select2-results__option {
+  padding: 10px;
+}
+
+.select2-results__option--highlighted {
+  background-color: #673ab7 !important;
+  color: white !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-container, .overlay-container {
+    padding: 20px;
+    margin: 30px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+  }
+}

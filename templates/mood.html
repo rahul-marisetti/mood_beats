@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Your Mood</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="form-container">
+    <h1>Select Mood & Preferences</h1>
+    <form method="POST" action="{{ url_for('get_songs') }}">
+      <label for="mood">Mood:</label>
+      <select name="mood" id="mood" required>
+        {% for mood in moods %}
+          <option value="{{ mood }}">{{ mood }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="language">Language:</label>
+      <select name="language" id="language" required>
+        {% for lang in languages %}
+          <option value="{{ lang }}">{{ lang }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="artist">Artist:</label>
+      <select name="artist" id="artist" required style="width: 100%;">
+        <option value="">Select a language first</option>
+      </select>
+
+      <button type="submit" class="btn">Get Songs</button>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#artist').select2({
+      placeholder: 'Choose an artist',
+      allowClear: true,
+      width: '100%'
+    });
+
+    $('#language').on('change', function () {
+      const language = $(this).val();
+
+      $.ajax({
+        type: 'POST',
+        url: '/get_artists',
+        data: { language: language },
+        success: function (data) {
+          $('#artist').empty();
+          if (data.length > 0) {
+            data.forEach(function (artist) {
+              $('#artist').append(new Option(artist, artist));
+            });
+            $('#artist').trigger('change');
+          } else {
+            $('#artist').append(new Option("No artists found", ""));
+          }
+        },
+        error: function () {
+          alert("Error loading artists.");
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Playlist</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+    }
+
+    .listen-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 40px;
+    }
+
+    .songs-list {
+      flex: 2;
+    }
+
+    .song-item {
+      margin-bottom: 20px;
+    }
+
+    .song-item a {
+      color: #90caf9;
+      text-decoration: none;
+    }
+
+    .artist-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .artist-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 8px #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="listen-container">
+    <div class="songs-list">
+      <h2>Your Song Picks 🎧</h2>
+      {% for song in songs %}
+        <div class="song-item">
+          <strong>{{ song.name }}</strong> by {{ song.artist }}<br>
+          {% if song.preview_url %}
+            <audio controls src="{{ song.preview_url }}"></audio><br>
+          {% endif %}
+          <a href="{{ song.external_url }}" target="_blank">Play on Spotify</a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="artist-image">
+      {% if artist_image %}
+        <img src="{{ artist_image }}" alt="Artist Image">
+      {% else %}
+        <p>No artist image found.</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
+

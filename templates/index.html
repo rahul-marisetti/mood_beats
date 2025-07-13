@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MoodTunes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      background: url("{{ url_for('static', filename='grey-music-bg.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay-container">
+    <h1>MoodTunes</h1>
+    <p>
+      Welcome to MoodTunes — the perfect place to match your feelings with music that truly connects.
+      Whether you're relaxing at home, heading out on a drive, working late at night, or reminiscing about old memories, music has the power to elevate your emotions.
+      Here, we combine your mood, language preference, and favorite artists to help you discover curated tracks that truly speak to your soul.
+      With support for a wide range of Indian languages and genres, we bring together regional sounds and global vibes in one seamless experience.
+      Click the button below to get started with your personalized music journey — simple, intuitive, and unforgettable.
+    </p>
+    <a href="{{ url_for('mood') }}" class="btn">Continue</a>
+  </div>
+</body>
+</html>
